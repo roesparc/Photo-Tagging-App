@@ -1,0 +1,16 @@
+@import "variables";
+
+:root {
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a,
+p {
+  font-size: $font-size-standard;
+}
