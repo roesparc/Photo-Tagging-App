@@ -1,8 +1,8 @@
-import lenny from "../assets/img/characters/lenny.png";
-import otto from "../assets/img/characters/otto.png";
+import krusty from "../assets/img/characters/krusty.png";
+import burns from "../assets/img/characters/burns.png";
 import flanders from "../assets/img/characters/flanders.png";
-import skinner from "../assets/img/characters/skinner.png";
-import ralph from "../assets/img/characters/ralph.png";
+import apu from "../assets/img/characters/apu.png";
+import doctor from "../assets/img/characters/doctor.png";
 
 import { Link, useLocation } from "react-router-dom";
 import styles from "../styles/Header.module.scss";
@@ -18,43 +18,50 @@ const Header = ({ foundCharacters }: Props) => {
 
   return (
     <header className={styles.root}>
-      <h2>{currentPage === "/" ? "Find The Characters!" : "Leaderboard"}</h2>
+      <div className={styles.heading}>
+        <h1>Simpsons Photo Tagging</h1>
+        <p>Find the characters!</p>
+      </div>
 
-      {currentPage === "/" && (
-        <div className={styles.characters}>
-          <img
-            className={foundCharacters.lenny ? styles.found : undefined}
-            src={lenny}
-            alt="Lenny"
-          />
-          <img
-            className={foundCharacters.flanders ? styles.found : undefined}
-            src={flanders}
-            alt="Flanders"
-          />
-          <img
-            className={foundCharacters.ralph ? styles.found : undefined}
-            src={ralph}
-            alt="Ralph"
-          />
-          <img
-            className={foundCharacters.skinner ? styles.found : undefined}
-            src={skinner}
-            alt="Skinner"
-          />
-          <img
-            className={foundCharacters.otto ? styles.found : undefined}
-            src={otto}
-            alt="Otto"
-          />
-        </div>
-      )}
+      <div className={styles.gameStats}>
+        {currentPage === "/leaderboard" && <h2>Leaderboard</h2>}
 
-      <Link to={currentPage === "/" ? "/leaderboard" : "/"}>
-        <button className={styles.headerBtn}>
-          {currentPage === "/" ? "Leaderboard" : "Game"}
-        </button>
-      </Link>
+        {currentPage === "/" && (
+          <div className={styles.characters}>
+            <img
+              className={foundCharacters.burns ? styles.found : undefined}
+              src={burns}
+              alt="Mr. Burns"
+            />
+            <img
+              className={foundCharacters.flanders ? styles.found : undefined}
+              src={flanders}
+              alt="Flanders"
+            />
+            <img
+              className={foundCharacters.krusty ? styles.found : undefined}
+              src={krusty}
+              alt="Krusty"
+            />
+            <img
+              className={foundCharacters.apu ? styles.found : undefined}
+              src={apu}
+              alt="Apu"
+            />
+            <img
+              className={foundCharacters.doctor ? styles.found : undefined}
+              src={doctor}
+              alt="Dr. Hibbert"
+            />
+          </div>
+        )}
+
+        <Link to={currentPage === "/" ? "/leaderboard" : "/"}>
+          <button className={styles.headerBtn}>
+            {currentPage === "/" ? "Leaderboard" : "Game"}
+          </button>
+        </Link>
+      </div>
     </header>
   );
 };
