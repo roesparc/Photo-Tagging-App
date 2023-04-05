@@ -1,0 +1,21 @@
+.root {
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.characters {
+  display: flex;
+  height: 7rem;
+  gap: 1rem;
+}
+
+.found {
+  opacity: 0.5;
+}
