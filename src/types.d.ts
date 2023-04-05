@@ -1,7 +1,7 @@
 export interface FoundCharacters {
-  lenny: boolean;
+  burns: boolean;
   flanders: boolean;
-  ralph: boolean;
-  skinner: boolean;
-  otto: boolean;
+  krusty: boolean;
+  apu: boolean;
+  doctor: boolean;
 }
