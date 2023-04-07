@@ -6,7 +6,7 @@ import { FoundCharacters } from "./common/types";
 import Main from "./components/Main";
 import { INITIAL_FOUND_CHARACTERS } from "./common/initialStates";
 
-const RouteSwitch = () => {
+const App = () => {
   const [foundCharacters, setFoundCharacters] = useState<FoundCharacters>(
     INITIAL_FOUND_CHARACTERS
   );
@@ -25,4 +25,4 @@ const RouteSwitch = () => {
   );
 };
 
-export default RouteSwitch;
+export default App;
