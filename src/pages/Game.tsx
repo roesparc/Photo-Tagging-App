@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import gameImg from "../assets/img/main.jpg";
 import styles from "../styles/Game.module.scss";
 import { CharactersLocation, FoundCharacters } from "../common/types";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { INITIAL_CHARACTERS_LOCATION } from "../common/initialStates";
 import GameOver from "../components/GameOver";
@@ -27,8 +27,7 @@ const Game = ({ foundCharacters, characterFound }: Props) => {
   }, []);
 
   const getCharactersLocation = async () => {
-    const q = query(collection(db, "locations"));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, "locations"));
 
     querySnapshot.forEach((doc) =>
       setcharacterLoacations((prev) => ({
