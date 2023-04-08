@@ -17,10 +17,17 @@ const App = () => {
     setFoundCharacters((prev) => ({ ...prev, [foundCharacter]: true }));
   };
 
+  const resetFoundCharacters = () => {
+    setFoundCharacters(INITIAL_FOUND_CHARACTERS);
+  };
+
   return (
     <div className={styles.root}>
       <BrowserRouter>
-        <Header foundCharacters={foundCharacters} />
+        <Header
+          foundCharacters={foundCharacters}
+          resetFoundCharacters={resetFoundCharacters}
+        />
 
         <Main>
           <Routes>

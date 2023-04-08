@@ -5,9 +5,10 @@ import imagePaths from "../assets/imagePaths";
 
 interface Props {
   foundCharacters: FoundCharacters;
+  resetFoundCharacters: () => void;
 }
 
-const Header = ({ foundCharacters }: Props) => {
+const Header = ({ foundCharacters, resetFoundCharacters }: Props) => {
   const location = useLocation();
   const currentPage = location.pathname;
 
@@ -52,7 +53,7 @@ const Header = ({ foundCharacters }: Props) => {
         )}
 
         <Link to={currentPage === "/" ? "/leaderboard" : "/"}>
-          <button className={styles.headerBtn}>
+          <button className={styles.headerBtn} onClick={resetFoundCharacters}>
             {currentPage === "/" ? "Leaderboard" : "Game"}
           </button>
         </Link>
