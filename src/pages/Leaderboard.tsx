@@ -2,23 +2,15 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase/config";
 import styles from "../styles/Leaderboard.module.scss";
-
-interface LeaderboardData {
-  name: string;
-  time: number;
-  id: string;
-}
-
-const INITIAL_LEADERBOARD_DATA = {
-  name: "Name",
-  time: 0,
-  id: "id",
-};
+import { INITIAL_LEADERBOARD_DATA } from "../common/initialStates";
+import { LeaderboardData } from "../common/types";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState<Array<LeaderboardData>>([
     INITIAL_LEADERBOARD_DATA,
   ]);
+  const [showSpinner, setShowSpinner] = useState<boolean>(true);
 
   useEffect(() => {
     getLeaderboard();
@@ -34,29 +26,34 @@ const Leaderboard = () => {
     }));
 
     setLeaderboard(entries);
+    setShowSpinner(false);
   };
 
   return (
     <div className={styles.root}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th colSpan={1}></th>
-            <th>Name</th>
-            <th>Time (Seconds)</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {leaderboard.map((entry, index) => (
-            <tr key={entry.id}>
-              <td>{index + 1}</td>
-              <td>{entry.name}</td>
-              <td>{entry.time}</td>
+      {showSpinner ? (
+        <LoadingSpinner />
+      ) : (
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th colSpan={1}></th>
+              <th>Name</th>
+              <th>Time (Seconds)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {leaderboard.map((entry, index) => (
+              <tr key={entry.id}>
+                <td>{index + 1}</td>
+                <td>{entry.name}</td>
+                <td>{entry.time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
