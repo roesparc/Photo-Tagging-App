@@ -7,6 +7,7 @@ import Main from "./components/Main";
 import { INITIAL_FOUND_CHARACTERS } from "./common/initialStates";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [foundCharacters, setFoundCharacters] = useState<FoundCharacters>(
@@ -45,6 +46,8 @@ const App = () => {
           </Routes>
         </Main>
       </BrowserRouter>
+
+      <Footer />
     </div>
   );
 };
