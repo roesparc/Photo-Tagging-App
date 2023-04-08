@@ -1,0 +1,66 @@
+@import "variables";
+
+.root {
+  position: relative;
+}
+
+.gameImg {
+  width: 125rem;
+  cursor: crosshair;
+}
+
+.characterList,
+.announce {
+  width: max-content;
+  position: absolute;
+  background-color: $color-white;
+  padding: 0.5rem;
+  border-radius: $main-border-radius;
+  box-shadow: 3px 4px $main-color-1;
+}
+
+.character {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: $main-border-radius;
+  user-select: none;
+  cursor: pointer;
+
+  > img {
+    height: 2rem;
+  }
+}
+.character:hover {
+  background-color: $color-hover-list;
+}
+
+.congratulate {
+  background-color: $color-correct;
+  color: $color-white;
+}
+
+.mistake {
+  background-color: $color-mistake;
+  color: $color-white;
+}
+
+.gameOver {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000080;
+}
