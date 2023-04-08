@@ -20,3 +20,9 @@ export const INITIAL_CHARACTERS_LOCATION = {
   apu: INITIAL_COORDINATES,
   doctor: INITIAL_COORDINATES,
 };
+
+export const INITIAL_LEADERBOARD_DATA = {
+  name: "Name",
+  time: 0,
+  id: "id",
+};

@@ -16,3 +16,9 @@ export interface Coordinates {
 export interface CharactersLocation {
   [key: string]: Coordinates;
 }
+
+export interface LeaderboardData {
+  name: string;
+  time: number;
+  id: string;
+}
