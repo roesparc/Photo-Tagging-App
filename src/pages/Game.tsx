@@ -1,12 +1,12 @@
 import imagePaths from "../assets/imagePaths";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import gameImg from "../assets/img/main.jpg";
 import styles from "../styles/Game.module.scss";
 import { CharactersLocation, FoundCharacters } from "../common/types";
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { INITIAL_CHARACTERS_LOCATION } from "../common/initialStates";
-import { useNavigate } from "react-router-dom";
+import GameOver from "../components/GameOver";
 
 interface Props {
   foundCharacters: FoundCharacters;
@@ -21,22 +21,10 @@ const Game = ({ foundCharacters, characterFound }: Props) => {
   const [gameFeedbackMessage, setGameFeedbackMessage] = useState<string>("");
   const [top, setTop] = useState<number>(0);
   const [left, setLeft] = useState<number>(0);
-  const startTimeRef = useRef<number>(Date.now());
-  const [finalTime, setFinalTime] = useState<number>(0);
-  const [showGameOver, setShowGameOver] = useState<boolean>(false);
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getCharactersLocation();
   }, []);
-
-  useEffect(() => {
-    if (Object.values(foundCharacters).every((value) => value)) {
-      setFinalTime(Date.now() - startTimeRef.current);
-      setShowGameOver(true);
-    }
-  }, [foundCharacters]);
 
   const getCharactersLocation = async () => {
     const q = query(collection(db, "locations"));
@@ -90,17 +78,6 @@ const Game = ({ foundCharacters, characterFound }: Props) => {
     }
   };
 
-  const submitScore = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    await addDoc(collection(db, "leaderboard"), {
-      name: nameInputRef.current?.value,
-      time: (finalTime / 1000).toFixed(2),
-    });
-
-    navigate("/leaderboard");
-  };
-
   return (
     <div className={styles.root}>
       <img
@@ -109,35 +86,6 @@ const Game = ({ foundCharacters, characterFound }: Props) => {
         src={gameImg}
         alt="Game"
       />
-
-      {showGameFeedback && (
-        <p
-          style={{ top: `${top}px`, left: `${left + 15}px` }}
-          className={`${styles.announce} ${
-            gameFeedbackMessage === "Keep looking!"
-              ? styles.mistake
-              : styles.congratulate
-          }`}
-        >
-          {gameFeedbackMessage}
-        </p>
-      )}
-
-      {showGameOver && (
-        <>
-          <div className={styles.overlay}></div>
-
-          <div className={styles.gameOver}>
-            <p>You finished in {(finalTime / 1000).toFixed(2)} seconds!</p>
-
-            <form onSubmit={submitScore}>
-              <input type="text" placeholder="Enter Name" ref={nameInputRef} />
-
-              <button>Submit Score</button>
-            </form>
-          </div>
-        </>
-      )}
 
       {showCharacterList && (
         <div
@@ -195,6 +143,21 @@ const Game = ({ foundCharacters, characterFound }: Props) => {
           )}
         </div>
       )}
+
+      {showGameFeedback && (
+        <p
+          style={{ top: `${top}px`, left: `${left + 15}px` }}
+          className={`${styles.announce} ${
+            gameFeedbackMessage === "Keep looking!"
+              ? styles.mistake
+              : styles.congratulate
+          }`}
+        >
+          {gameFeedbackMessage}
+        </p>
+      )}
+
+      <GameOver foundCharacters={foundCharacters} />
     </div>
   );
 };
