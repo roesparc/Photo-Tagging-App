@@ -6,6 +6,7 @@ import { FoundCharacters } from "./common/types";
 import Main from "./components/Main";
 import { INITIAL_FOUND_CHARACTERS } from "./common/initialStates";
 import Game from "./pages/Game";
+import Leaderboard from "./pages/Leaderboard";
 
 const App = () => {
   const [foundCharacters, setFoundCharacters] = useState<FoundCharacters>(
@@ -20,6 +21,7 @@ const App = () => {
     <div className={styles.root}>
       <BrowserRouter>
         <Header foundCharacters={foundCharacters} />
+
         <Main>
           <Routes>
             <Route
@@ -31,6 +33,8 @@ const App = () => {
                 />
               }
             />
+
+            <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
         </Main>
       </BrowserRouter>
