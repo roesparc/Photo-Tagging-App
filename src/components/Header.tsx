@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "../styles/Header.module.scss";
+import btnStyles from "../styles/ButtonStyles.module.scss";
 import { FoundCharacters } from "../common/types";
 import imagePaths from "../assets/imagePaths";
 
@@ -53,7 +54,7 @@ const Header = ({ foundCharacters, resetFoundCharacters }: Props) => {
         )}
 
         <Link to={currentPage === "/" ? "/leaderboard" : "/"}>
-          <button className={styles.headerBtn} onClick={resetFoundCharacters}>
+          <button className={btnStyles.main} onClick={resetFoundCharacters}>
             {currentPage === "/" ? "Leaderboard" : "Game"}
           </button>
         </Link>
