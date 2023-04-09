@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../firebase/config";
 import { FoundCharacters } from "../common/types";
 import styles from "../styles/GameOver.module.scss";
+import btnStyles from "../styles/ButtonStyles.module.scss";
 import LoadingSpinner from "./LoadingSpinner";
 
 interface Props {
@@ -50,13 +51,14 @@ const GameOver = ({ foundCharacters }: Props) => {
               <>
                 <p>You finished in {(finalTime / 1000).toFixed(2)} seconds!</p>
 
-                <form onSubmit={submitScore}>
+                <form className={styles.formScore} onSubmit={submitScore}>
                   <input
                     type="text"
                     placeholder="Enter Name"
+                    required
                     ref={nameInputRef}
                   />
-                  <button>Submit Score</button>
+                  <button className={btnStyles.main}>Submit Score</button>
                 </form>
               </>
             )}
