@@ -1,0 +1,17 @@
+@import "variables";
+
+.main {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: $main-border-radius;
+  font-weight: bold;
+  background-color: $color-main-2;
+  box-shadow: 3px 3px $color-black;
+  transition: $transition-quick;
+
+  &:hover {
+    box-shadow: 1px 1px $color-black;
+    color: $color-main-2;
+    background-color: $color-black;
+  }
+}

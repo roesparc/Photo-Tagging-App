@@ -1,12 +1,21 @@
+@import "variables";
+
 .root {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
+
+  p {
+    text-shadow: $text-shadow-white;
+  }
 }
 
 .authorLink {
+  color: $color-black;
+  text-shadow: $text-shadow-alt;
+  font-weight: bold;
   text-decoration: none;
 
   &:hover {
@@ -15,6 +24,8 @@
 }
 
 .githubLogo {
+  color: $color-black;
+  filter: drop-shadow($text-shadow-alt);
   transition: all 500ms ease;
   display: block;
 

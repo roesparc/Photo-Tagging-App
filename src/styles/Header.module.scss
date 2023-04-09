@@ -1,9 +1,24 @@
+@import "variables";
+
 .root {
   padding: 1rem;
 }
 
 .heading {
   text-align: center;
+  margin-bottom: 1rem;
+
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 5rem;
+    color: $color-main-2;
+    text-shadow: $text-shadow-heading;
+  }
+
+  p {
+    font-weight: bold;
+    text-shadow: $text-shadow-white;
+  }
 }
 
 .gameStats {
@@ -12,6 +27,17 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  h2 {
+    font-size: 3.5rem;
+    color: $color-mistake-2;
+    text-shadow: $text-shadow-heading;
+  }
+
+  @media (max-width: 500px) {
+    justify-content: center;
+    gap: 1rem;
+  }
 }
 
 .characters {
@@ -22,5 +48,5 @@
 }
 
 .found {
-  opacity: 0.5;
+  opacity: 0.3;
 }

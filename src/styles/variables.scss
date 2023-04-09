@@ -1,1 +1,22 @@
-$font-size-standard: 1.5rem;
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Permanent+Marker&family=Reenie+Beanie&display=swap");
+
+$font-size-standard: 2rem;
+$font-family-standard: "Reenie Beanie", sans-serif;
+
+$main-border-radius: 0.5rem;
+
+$transition-quick: all 200ms ease;
+
+$color-main-1: #01abdc;
+$color-main-1-gradient: #68c7ff;
+$color-main-2: #ffe200;
+$color-correct: #23b93a;
+$color-mistake: #f43f3f;
+$color-mistake-2: #ffba3a;
+$color-white: #ffffff;
+$color-grey: #e6e6e6;
+$color-black: #000000;
+
+$text-shadow-white: 1px 1px $color-white;
+$text-shadow-heading: 3px 2px $color-black, 0 0 $color-black, 0 0 $color-black;
+$text-shadow-alt: 2px 2px $color-main-2;

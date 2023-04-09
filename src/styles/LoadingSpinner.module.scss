@@ -1,4 +1,10 @@
+@import "variables";
+
 .root {
+  font-size: 4rem;
+  color: $color-main-2;
+  display: block;
+  margin: auto;
   animation: spin 1s linear infinite;
 }
 

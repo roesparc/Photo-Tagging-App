@@ -2,6 +2,7 @@
 
 .root {
   position: relative;
+  overflow: auto;
 }
 
 .gameImg {
@@ -16,7 +17,7 @@
   background-color: $color-white;
   padding: 0.5rem;
   border-radius: $main-border-radius;
-  box-shadow: 3px 4px $main-color-1;
+  box-shadow: 3px 3px $color-main-1;
 }
 
 .character {
@@ -31,36 +32,22 @@
   > img {
     height: 2rem;
   }
-}
-.character:hover {
-  background-color: $color-hover-list;
+
+  &:hover {
+    background-color: $color-grey;
+  }
 }
 
 .congratulate {
+  font-weight: bold;
   background-color: $color-correct;
   color: $color-white;
+  box-shadow: 3px 3px $color-main-2;
 }
 
 .mistake {
+  font-weight: bold;
   background-color: $color-mistake;
   color: $color-white;
-}
-
-.gameOver {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 2rem;
-  border-radius: 0.5rem;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #00000080;
+  box-shadow: 3px 3px $color-mistake-2;
 }

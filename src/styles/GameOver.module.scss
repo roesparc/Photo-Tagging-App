@@ -1,11 +1,42 @@
+@import "variables";
+
 .root {
+  min-width: 24rem;
+  text-align: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: $color-main-1;
+  border: 2px solid white;
   padding: 2rem;
   border-radius: 0.5rem;
+  z-index: 2;
+
+  p {
+    color: $color-main-2;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: $text-shadow-heading;
+  }
+}
+
+.formScore {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  input {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    box-shadow: 0px 0px 5px #e6e6e6;
+  }
 }
 
 .overlay {
@@ -15,4 +46,5 @@
   height: 100%;
   width: 100%;
   background-color: #00000080;
+  z-index: 1;
 }
