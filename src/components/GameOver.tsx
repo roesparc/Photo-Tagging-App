@@ -21,7 +21,8 @@ const GameOver = ({ foundCharacters }: Props) => {
 
   useEffect(() => {
     if (Object.values(foundCharacters).every((value) => value)) {
-      setFinalTime(Date.now() - startTimeRef.current);
+      const elapsedTime = Date.now() - startTimeRef.current;
+      setFinalTime(Math.round((elapsedTime / 1000) * 100) / 100);
       setShowGameOver(true);
     }
   }, [foundCharacters]);
@@ -32,7 +33,7 @@ const GameOver = ({ foundCharacters }: Props) => {
 
     await addDoc(collection(db, "leaderboard"), {
       name: nameInputRef.current?.value,
-      time: (finalTime / 1000).toFixed(2),
+      time: finalTime,
     });
 
     navigate("/leaderboard");
@@ -49,7 +50,7 @@ const GameOver = ({ foundCharacters }: Props) => {
               <LoadingSpinner />
             ) : (
               <>
-                <p>You finished in {(finalTime / 1000).toFixed(2)} seconds!</p>
+                <p>You finished in {finalTime} seconds!</p>
 
                 <form className={styles.formScore} onSubmit={submitScore}>
                   <input
