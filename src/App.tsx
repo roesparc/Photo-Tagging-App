@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import styles from "./styles/RouteSwitch.module.scss";
+import styles from "./styles/App.module.scss";
 import { useState } from "react";
 import { FoundCharacters } from "./common/types";
-import Main from "./components/Main";
 import { INITIAL_FOUND_CHARACTERS } from "./common/initialStates";
 import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
@@ -30,7 +29,7 @@ const App = () => {
           resetFoundCharacters={resetFoundCharacters}
         />
 
-        <Main>
+        <main>
           <Routes>
             <Route
               path="/"
@@ -44,7 +43,7 @@ const App = () => {
 
             <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
-        </Main>
+        </main>
       </BrowserRouter>
 
       <Footer />
